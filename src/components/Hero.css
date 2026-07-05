@@ -1,0 +1,185 @@
+section.hero {
+    height: 100vh;
+    height: 100dvh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.hero .bg {
+    position: absolute;
+    height: 120%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    background: url('../assets/hero-bg.jpg') center/cover no-repeat fixed;
+}
+
+.hero .bg::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(rgb(51, 51, 51, 0) 10%, #333333 95%);
+}
+
+.hero .text {
+    padding-left: 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 99;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    font-weight: 800;
+}
+
+.hero p {
+    width: 42rem;
+    font-weight: 300;
+    line-height: 1.4rem;
+    margin-block: 1.5rem 2rem;
+}
+
+.hero .text div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+
+.hero .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 1rem;
+    height: 3rem;
+    width: 8.5rem;
+    transition: font-weight 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.hero .btn.black {
+    background-color: rgb(45, 45, 45, .7);
+}
+
+.hero .btn.white {
+    background-color: rgb(230, 230, 230, .3);
+}
+
+.hero .btn:hover {
+    font-weight: 600;
+}
+
+.hero .btn.black:hover {
+    background-color: rgb(40, 40, 40, .85);
+}
+
+.hero .btn.white:hover {
+    background-color: rgb(230, 230, 230, 0.85);
+    color: var(--black);
+}
+
+@media (max-width: 910px) {
+    section.hero {
+        align-items: center;
+    }
+
+    .hero .text {
+        padding: 0;
+    }
+
+    .hero h1 {
+        font-size: 3.5rem;
+    }
+
+    .hero p {
+        width: 40rem;
+        font-size: 0.95rem;
+    }
+
+    .hero .text div {
+        font-size: 0.95rem;
+    }
+
+    .hero .btn {
+        height: 2.8rem;
+        width: 8.4rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .hero .text {
+        padding-inline: 8%;
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 0.85rem;
+        width: auto;
+    }
+
+    .hero .text div {
+        font-size: 0.85rem;
+    }
+
+    .hero .btn {
+        height: 2.7rem;
+        width: 8rem;
+    }
+}
+
+@media (max-width: 570px) {
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .hero p {
+        font-size: 0.8rem;
+    }
+
+    .hero .text div {
+        font-size: 0.8rem;
+        gap: 1.5rem;
+    }
+
+    .hero .btn {
+        height: 2.5rem;
+        width: 7rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .hero .text {
+        padding-inline: 6%;
+    }
+
+    .hero h1 {
+        font-size: 1.6rem;
+    }
+
+    .hero p {
+        font-size: 0.75rem;
+    }
+
+    .hero .text div {
+        gap: 1rem;
+    }
+}
+
+@media (max-height: 600px) {
+    section.hero {
+        height: 600px;
+    }
+}

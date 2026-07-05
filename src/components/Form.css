@@ -1,0 +1,659 @@
+section.form {
+    position: relative;
+    margin-top: 8rem;
+    width: 100%;
+    color: var(--black);
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+    align-items: center;
+}
+
+.form .bg {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url('../assets/form-bg.jpg') center/cover no-repeat;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .bg::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-image: linear-gradient(180deg, rgb(51, 51, 51) 0%, rgb(51, 51, 51, 0) 20%, rgb(51, 51, 51, 0) 80%, rgb(51, 51, 51) 100%);
+    z-index: 2;
+}
+
+.form form {
+    position: relative;
+    z-index: 3;
+    background-color: rgb(230, 230, 230, .6);
+    width: 62rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    padding-block: 3rem;
+    margin-block: 10rem;
+}
+
+.form .personal-details,
+.form .trip-details {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .trip-details {
+    margin-block: 3rem;
+}
+
+.form .personal-details > div,
+.form .trip-details > div {
+    width: 100%;
+}
+
+.form h2 {
+    font-weight: 800;
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+}
+
+.form .grid-two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 3rem;
+}
+
+.form .must-fill-in {
+    color: red;
+    font-size: 0.7rem;
+}
+
+.form label,
+.form form p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+}
+
+.form input[type='text'],
+.form input[type='date'],
+.form input[type='email'],
+.form input[type='tel'],
+.form select {
+    width: 100%;
+    height: 2.2rem;
+    border: none;
+    border-radius: 0.5rem;
+    padding-inline: 0.6rem;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.form input[type='text'],
+.form input[type='date'],
+.form input[type='email'],
+.form input[type='tel'] {
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+}
+
+.form input::placeholder,
+.form input[type='date'] {
+    color: #757575;
+}
+
+.form input[type='date'].has-date {
+    color: var(--black);
+}
+
+.form .select-wrapper {
+    position: relative;
+    width: 100%;
+    height: 2.2rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.8rem;
+    cursor: pointer;
+}
+
+.form .select-wrapper::after {
+    content: '';
+    position: absolute;
+    right: 0.85rem;
+    top: 35%;
+    height: 4.5px;
+    width: 4.5px;
+    border: solid black;
+    border-width: 0 1.8px 1.8px 0;
+    transform: translateY(0) rotate(45deg);
+    transition: transform 0.2s ease-in-out;
+    pointer-events: none;
+}
+
+.form .select-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 2rem;
+    right: 0;
+    background-color: white;
+    border-radius: 0.5rem;
+}
+
+.form select {
+    appearance: none;
+    cursor: pointer;
+}
+
+/* .form .select-wrapper.open::after {
+    transform: translateY(70%) rotate(-135deg);
+} */
+
+.form .addition-margin {
+    margin-block: 0.5rem;
+}
+
+.form .checkboxes {
+    position: relative;
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem 2.5rem;
+}
+
+.form input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    height: 1.4rem;
+    width: 1.4rem;
+    z-index: 99;
+}
+
+.form .checkboxes > div,
+.form .declare {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.form .declare {
+    margin-top: 0.2rem;
+}
+
+.form .checkmark {
+    position: relative;
+    background-color: white;
+    height: 1.3rem;
+    width: 1.3rem;
+    min-width: 1.3rem;
+    border-radius: 0.3rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
+    transition: background-color 0.1s ease-in-out;
+}
+
+.form .checkmark:hover {
+    background-color: #ccc;
+}
+
+.form .checkmark::after {
+    content: '';
+    position: relative;
+    display: block;
+    top: 1.8px;
+    left: 7.1px;
+    width: 20%;
+    height: 55%;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.form input:checked ~ .checkmark {
+    background-color: #0c82e2;
+}
+
+.form .checkmark + label {
+    font-weight: 400;
+    margin: 0;
+}
+
+.form textarea {
+    height: 4.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.6rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.8rem;
+    scrollbar-width: none;
+    resize: none;
+    font-size: 0.8rem;
+    outline: none;
+}
+
+.form .shake {
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    20%, 60% {
+        transform: translateX(-8px);
+    }
+    40%, 80% {
+        transform: translateX(8px);
+    }
+}
+
+.form .btn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .confirm-btn {
+    background-color: var(--black);
+    border: none;
+    font-size: 0.85rem;
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.7rem;
+    width: 12.5rem;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: font-size 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+
+.form .confirm-btn:hover {
+    font-size: 0.9rem;
+    transform: scale(1.05);
+}
+
+.form .clear-btn {
+    font-size: 0.85rem;
+    height: 1.8rem;
+    background-color: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    cursor: pointer;
+    transition: font-size 0.1s ease-in-out;
+}
+
+.form .clear-btn:hover {
+    font-size: 0.9rem;
+}
+
+.form .result {
+    width: 66.5rem;
+    position: absolute;
+    background-color: rgb(230, 230, 230, .6);
+    border-radius: 1rem;
+    padding: 3rem 6rem;
+}
+
+.form .result h2 {
+    width: 100%;
+    text-align: center;
+}
+
+.form .result h3 {
+    font-size: 1rem;
+}
+
+.form .result .tq {
+    font-size: 0.95rem;
+    padding-top: 0.6rem;
+}
+
+.form .result > div {
+    width: 100%;
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-block: 1rem;
+}
+
+.form .title {
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+}
+
+.form .ans {
+    display: flex;
+    flex-direction: column; 
+    flex: 1;
+    overflow: hidden;
+}
+
+.form .ans > div {
+    white-space: nowrap;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.form .result > div,
+.form .title,
+.form .ans {
+    gap: 0.3rem;
+}
+
+.form .alpha,
+.form .beta {
+    padding: 0.6rem;
+    border-radius: 0.3rem;
+}
+
+.form .alpha {
+    background-color: rgb(255, 255, 255, .9);
+}
+
+.form .beta {
+    background-color: rgb(255, 255, 255, .4);
+}
+
+.form .result > .details-two {
+    display: none;
+    flex-direction: column;
+}
+
+.form .result > .details-two > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.form .result .details-two .title {
+    border-radius: 0.5rem 0.5rem 0 0;
+    padding: 0.65rem;
+    padding-bottom: 0rem;
+}
+
+.form .result .details-two .ans {
+    border-radius: 0 0 0.5rem 0.5rem;
+    padding: 0.65rem;
+    padding-top: 0.3rem;
+    white-space: nowrap;
+    overflow: auto;
+    scrollbar-width: none;
+}
+
+.form .email-copy {
+    font-size: 0.85rem;
+}
+
+.form .red {
+    font-size: 0.8rem;
+    padding-top: 0.5rem;
+    color: red;
+}
+
+.form .front {
+    opacity: 1;
+    z-index: 99;
+    transition: opacity 1.0s ease-in-out;
+}
+
+.form .back {
+    opacity: 0;
+    z-index: 98;
+    pointer-events: none;
+    transition: opacity 1.0s ease-in-out;
+}
+
+@media (max-width: 1200px) {
+    .form form {
+        width: 80%;
+    }
+
+    .form .result {
+        width: 55rem;
+    }
+}
+
+@media (max-width: 1080px) {
+    .form .grid-two-col {
+        column-gap: 2rem;
+    }
+
+    .form .checkboxes {
+        width: 40rem;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        row-gap: 0.5rem;
+        column-gap: 0;
+    }
+}
+
+@media (max-width: 1020px) {
+    .form .result {
+        width: 48rem;
+        padding: 2.5rem 3rem;
+    }
+}
+
+@media (max-width: 930px) {
+    .form .personal-details,
+    .form .trip-details {
+        width: 85%;
+    }
+
+    .form .checkboxes {
+        width: 35rem;
+    }
+}
+
+@media (max-width: 875px) {
+    .declare label {
+        font-size: 0.85rem;
+    }
+
+    .form .result {
+        width: 88%;
+    }
+
+    .form .result > div {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .form .personal-details,
+    .form .trip-details {
+        width: 70%;
+    }
+
+    .form .grid-two-col {
+        column-gap: 0rem;
+        grid-template-columns: 1fr;
+    }
+
+    .form .checkboxes {
+        width: 100%;
+    }
+
+    .form h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+
+    .form label, 
+    .form form p {
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .declare label {
+        font-size: 0.85rem;
+    }
+
+    .form .result {
+        padding: 2.2rem 2.5rem;
+    }
+
+    .form .result h3 {
+        font-size: 0.9rem;
+    }
+
+    .form .result .tq {
+        font-size: 0.85rem;
+        padding-top: 0.4rem;
+    }
+
+    .form .result > div {
+        padding-block: 0.8rem;
+    }
+
+    .form .red {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 685px) {
+    .form .result {
+        width: 91%;
+        padding: 1.8rem 2rem;
+    }
+
+    .form .result > div {
+        font-size: 0.75rem;
+    }
+
+    .form .email-copy {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 625px) {
+    .form .result {
+        width: 98%;
+        padding: 2rem;
+    }
+
+    .form .result h2 {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .form form {
+        width: 90%;
+        padding-block: 2rem;
+    }
+
+    .form .personal-details,
+    .form .trip-details {
+        width: 86%;
+    }
+
+    .form label, 
+    .form form p {
+        font-size: 0.8rem;
+        font-weight: 600;
+    }
+
+    .form .checkboxes {
+        grid-template-columns: 1fr;
+    }
+
+    .form input[type='text'],
+    .form input[type='date'],
+    .form input[type='email'],
+    .form input[type='tel'],
+    .form select {
+        height: 2rem;
+        border: none;
+        padding-inline: 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .form .select-wrapper {
+        height: 2rem;
+    }
+
+    .form .declare label {
+        font-size: 0.8rem;
+    }
+
+    .form .confirm-btn {
+        width: 11.6rem;
+        font-size: 0.8rem;
+    }
+
+    .form .confirm-btn:hover {
+        font-size: 0.85rem;
+    } 
+
+    .form .clear-btn {
+        font-size: 0.8rem;
+    }
+
+    .form .clear-btn:hover {
+        font-size: 0.85rem;
+    }
+
+    .form .result > .details-one {
+        display: none;
+    }
+
+    .form .result > .details-two {
+        display: flex;
+    }
+}
+
+@media (max-width: 526px) {
+    .form .result {
+        padding: 1.5rem 0.8rem;
+    }
+
+    .form .alpha,
+    .form .beta {
+        padding: 0.55rem 0.3rem;
+    }
+}
+
+@media (max-width: 402px) {
+    .form form {
+        width: 96%;
+        padding-block: 2rem;
+    }
+
+    .form .personal-details,
+    .form .trip-details {
+        width: 91%;
+    }
+
+    .form .result h3 {
+        font-size: 0.85rem;
+    }
+
+    .form .result .tq {
+        font-size: 0.8rem;
+    }
+}
