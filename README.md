@@ -4,17 +4,13 @@ A modern remake of a university web design project, rebuilt using React.js with 
 
 ## Features
 
-* **Accommodation Recommendation**
-  Showcases Paya Beach Resort as a recommended stay option.
+🏨 **Accommodation Recommendation** - Showcases Paya Beach Resort as a recommended stay option.
 
-* **Scuba Diving Recommendation**
-  Introduces B&J Diving Centre for visitors interested in diving activities.
+🤿 **Scuba Diving Recommendation** - Introduces B&J Diving Centre for visitors interested in diving activities.
 
-* **Ferry Transportation**
-  Provides ferry booking information through redBus.
+⛴️ **Ferry Transportation** - Provides ferry booking information through redBus.
 
-* **Responsive Design**
-  Optimized for different screen sizes with a clean and interactive layout.
+📱 **Responsive Design** - Optimized for different screen sizes with a clean and interactive layout.
 
 ## Notes
 
