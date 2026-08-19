@@ -20,6 +20,12 @@ section.hero {
     background: url('../assets/hero-bg.jpg') center/cover no-repeat fixed;
 }
 
+@supports (-webkit-touch-callout: none) {
+    .hero .bg {
+        background-attachment: scroll;
+    }
+}
+
 .hero .bg::after {
     content: '';
     position: absolute;

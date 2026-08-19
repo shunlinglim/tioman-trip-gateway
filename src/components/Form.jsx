@@ -15,11 +15,11 @@ export function Form() {
 	const [memberCount, setMemberCount] = useState('1');
 	const [travelPref, setTravelPref] = useState('Paya Beach Resort, B&J Diving Centre and redBus');
 	const [membership, setMembership] = useState({
-        paya: false,
-        diving: false,
-        redBus: false,
-        none: false,
-    });
+		paya: false,
+		diving: false,
+		redBus: false,
+		none: false,
+	});
 	const [spReq, setSpReq] = useState('');
 	// const [selectIsOpen, setSelectIsOpen] = useState(false);
 	const [declared, setDeclared] = useState(false);
@@ -32,21 +32,21 @@ export function Form() {
 
 	const openDatePicker = (event) => event.target.showPicker?.();
 	const membershipStatus = (key) => {
-        if (key === 'none') {
-            setMembership({
-                paya: false,
-                diving: false,
-                redBus: false,
-                none: !membership.none,
-            });
-        } else {
-            setMembership({
-                ...membership,
-                [key]: !membership[key],
-                none: false,
-            });
-        }
-    };
+		if (key === 'none') {
+			setMembership({
+				paya: false,
+				diving: false,
+				redBus: false,
+				none: !membership.none,
+			});
+		} else {
+			setMembership({
+				...membership,
+				[key]: !membership[key],
+				none: false,
+			});
+		}
+	};
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -73,7 +73,7 @@ export function Form() {
 
 		if (requiredInputs.some(input => !input.value.trim())) {
 			alert('Please fill in the required field.');
-        	return;
+			return;
 		}
 
 		if (emailAddressInput.validity.typeMismatch) {
@@ -152,32 +152,48 @@ export function Form() {
 						<div>
 							<label htmlFor="fname">First Name {!firstName && (<span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="text" name="first-name" id="fname" value={firstName} onChange={(e) => setFirstName(e.target.value)} required/>
+							<input type="text" name="first-name" id="fname" value={firstName} onChange={(e) => setFirstName(e.target.value)} required />
 						</div>
 						<div>
 							<label htmlFor="lname">Last Name {!lastName && (<span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="text" name="last-name" id="lname" value={lastName} onChange={(e) => setLastName(e.target.value)} required/>
+							<input type="text" name="last-name" id="lname" value={lastName} onChange={(e) => setLastName(e.target.value)} required />
 						</div>
 						<div>
 							<label htmlFor="home-addr">Home Address {!homeAddress && (<span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="text" name="home-address" id="home-addr" value={homeAddress} onChange={(e) => setHomeAddress(e.target.value)} required/>
+							<input type="text" name="home-address" id="home-addr" value={homeAddress} onChange={(e) => setHomeAddress(e.target.value)} required />
 						</div>
 						<div>
 							<label htmlFor="dob">Date of Birth {!dob && (<span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="date" name="date-of-birth" id="dob" max={eighteenYearsOld} value={dob} onClick={openDatePicker} onChange={(e) => setDob(e.target.value)} className={dob ? 'has-date' : ''} required/>
+							<input type="date"
+								name="date-of-birth"
+								id="dob"
+								max={eighteenYearsOld}
+								value={dob}
+								onClick={openDatePicker}
+								onChange={(e) => {
+									const value = e.target.value;
+
+									if (value > eighteenYearsOld) {
+										return;
+									}
+
+									setDob(value);
+								}}
+								className={dob ? 'has-date' : ''}
+								required />
 						</div>
 						<div>
 							<label htmlFor="email">Email Address {(!emailAddress && <span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="email" name="email-address" id="email" placeholder="example@domain.com" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} required/>
+							<input type="email" name="email-address" id="email" placeholder="example@domain.com" value={emailAddress} onChange={(e) => setEmailAddress(e.target.value)} required />
 						</div>
 						<div>
 							<label htmlFor="contact-num">Contact Number {(!contactNumber && <span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="tel" name="contact-number" id="contact-num" placeholder='0123456789' value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required/>
+							<input type="tel" name="contact-number" id="contact-num" placeholder='0123456789' value={contactNumber} onChange={(e) => setContactNumber(e.target.value)} required />
 						</div>
 					</div>
 				</div>
@@ -187,12 +203,53 @@ export function Form() {
 						<div>
 							<label htmlFor="strip">Trip Start Date {(!sdate && <span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="date" name="trip-start-date" id="strip" value={sdate} min={today} max={edate || undefined} onClick={openDatePicker} onChange={(e) => setSdate(e.target.value)} className={sdate ? 'has-date' : ''} required />
+							<input type="date"
+								name="trip-start-date"
+								id="strip"
+								value={sdate}
+								min={today}
+								max={edate || undefined}
+								onClick={openDatePicker}
+								onChange={(e) => {
+									const value = e.target.value;
+
+									if (value < today) {
+										return;
+									}
+
+									if (edate && value > edate) {
+										return;
+									}
+
+									setSdate(value);
+								}}
+								className={sdate ? 'has-date' : ''}
+								required />
 						</div>
 						<div>
 							<label htmlFor="etrip">Trip End Date {(!edate && <span className='must-fill-in'>*</span>)}</label>
 							<br />
-							<input type="date" name="trip-end-date" id="etrip" value={edate} min={sdate || today} onClick={openDatePicker} onChange={(e) => setEdate(e.target.value)} className={edate ? 'has-date' : ''} required />
+							<input type="date"
+								name="trip-end-date"
+								id="etrip"
+								value={edate}
+								min={sdate || today}
+								onClick={openDatePicker}
+								onChange={(e) => {
+									const value = e.target.value;
+
+									if (value < today) {
+										return;
+									}
+
+									if (sdate && value < sdate) {
+										return;
+									}
+
+									setEdate(value);
+								}}
+								className={edate ? 'has-date' : ''}
+								required />
 						</div>
 						<div>
 							<label htmlFor="member-num">Number of Members</label>
@@ -227,12 +284,12 @@ export function Form() {
 						<p>Do you hold a membership with any of these? {(!hasMembershipSelection && <span className='must-fill-in'>*</span>)}</p>
 						<div className="checkboxes">
 							<div>
-								<input type="checkbox" name="membership" id="Paya-Beach-Resort" checked={membership.paya} onChange={() => membershipStatus('paya')}/>
+								<input type="checkbox" name="membership" id="Paya-Beach-Resort" checked={membership.paya} onChange={() => membershipStatus('paya')} />
 								<div className="checkmark" />
 								<label htmlFor="Paya-Beach-Resort">Paya Beach Resort</label>
 							</div>
 							<div>
-								<input type="checkbox" name="membership" id="B&J-Diving-Centre" checked={membership.diving} onChange={() => membershipStatus('diving')}/>
+								<input type="checkbox" name="membership" id="B&J-Diving-Centre" checked={membership.diving} onChange={() => membershipStatus('diving')} />
 								<div className="checkmark" />
 								<label htmlFor="B&J-Diving-Centre">B&J Diving Centre</label>
 							</div>
@@ -242,7 +299,7 @@ export function Form() {
 								<label htmlFor="redBus">redBus</label>
 							</div>
 							<div>
-								<input type="checkbox" name="membership" id="None-of-these" checked={membership.none} onChange={() => membershipStatus('none')}/>
+								<input type="checkbox" name="membership" id="None-of-these" checked={membership.none} onChange={() => membershipStatus('none')} />
 								<div className="checkmark" />
 								<label htmlFor="None-of-these">None of these</label>
 							</div>
@@ -251,10 +308,10 @@ export function Form() {
 					<div>
 						<label htmlFor="sp-request">Special Request</label>
 						<br />
-						<textarea name="special-request" id="sp-request" placeholder='Enter any special requests here...' onChange={(e) => setSpReq(e.target.value)}/>
+						<textarea name="special-request" id="sp-request" placeholder='Enter any special requests here...' onChange={(e) => setSpReq(e.target.value)} />
 					</div>
 					<div className='declare'>
-						<input type="checkbox" name="declaration" id="declare" checked={declared} onChange={(e) => setDeclared(e.target.checked)}/>
+						<input type="checkbox" name="declaration" id="declare" checked={declared} onChange={(e) => setDeclared(e.target.checked)} />
 						<div className="checkmark" />
 						<label htmlFor="declare" className={isShaking ? 'shake' : ''} onAnimationEnd={() => setIsShaking(false)}>I understand this is a demo project. No personal data or choices are recorded.</label>
 					</div>
@@ -297,7 +354,7 @@ export function Form() {
 							</div>
 						</div>
 					))}
-					{spReq.trim() ? 
+					{spReq.trim() ?
 						<div>
 							<div className='title beta'>Special Requests:</div>
 							<div className='ans beta'>{spReq}</div>
